@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1062477056170",
+    "project_id": "paytrack-ff303",
+    "storage_bucket": "paytrack-ff303.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062477056170:android:57c749d12e75509bf4e8d3",
+        "android_client_info": {
+          "package_name": "com.example.expenseapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFkf5NLLfguwb2IGd7suG8fE17SojFqLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
