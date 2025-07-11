@@ -1,7 +1,6 @@
 import 'package:expenseapp/methods/expenses_data.dart';
 import 'package:expenseapp/models/gradient_button.dart';
 import 'package:expenseapp/models/input_field.dart';
-import 'package:expenseapp/pages/auth_page.dart';
 import 'package:expenseapp/theme/theme_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

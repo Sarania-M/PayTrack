@@ -110,36 +110,30 @@ class HomePageState extends State<HomePage> {
 
   //save a new expense
  void save(String selectedCategory){
-    
-    final provider = Provider.of<ExpensesData>(context,listen: false);
-    final uid = FirebaseAuth.instance.currentUser?.uid;
-    if (uid == null) return;
+  final provider = Provider.of<ExpensesData>(context, listen: false);
 
-    //save when fields are not empty
-    if(nameController.text.isNotEmpty && amountController.text.isNotEmpty && selectedCategory.isNotEmpty){
-      ExpenseItem newItem = ExpenseItem(
-        uid: uid,
-        name: nameController.text, 
-        amount: double.parse(amountController.text), 
-        dateTime: DateTime.now(),
-        category: selectedCategory
-      );
+  if (nameController.text.isNotEmpty && amountController.text.isNotEmpty && selectedCategory.isNotEmpty){
+    ExpenseItem newItem = ExpenseItem(
+      uid: '', // will be set inside addExpense
+      name: nameController.text,
+      amount: double.parse(amountController.text),
+      dateTime: DateTime.now(),
+      category: selectedCategory,
+    );
 
-      provider.addExpense(newItem);
-    }
-
-    //clear the text fields and close the dialog
-
-    Navigator.pop(context);
-    nameController.clear();
-    amountController.clear();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await _checkBudgetExceeded(context,provider);
-      
+    provider.addExpense(newItem).then((_) {
+      // after adding expense
+      provider.prepare().then((_) {
+        _checkBudgetExceeded(context, provider);
+      });
     });
   }
-  
+
+  Navigator.pop(context);
+  nameController.clear();
+  amountController.clear();
+}
+
 
   
   //check if budget exceeded
