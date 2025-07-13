@@ -14,15 +14,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  // List of screens to display
-  final List<Widget> _screens = [
-      //HomePage
-      HomePage(),
-      //SettingsPage
-      SettingsPage()
-
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -36,8 +27,19 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+     // List of screens to display
+  final List<Widget> screens = const [
+      //HomePage
+      HomePage(),
+      //SettingsPage
+      SettingsPage()
+
+  ];
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: screens
+      ),
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Theme.of(context).colorScheme.primary,
           unselectedItemColor: const Color.fromARGB(224, 103, 112, 115),

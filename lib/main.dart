@@ -19,7 +19,10 @@ void main() async {
     persistenceEnabled: true
   );
 
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (_)=> ThemeProvider(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,15 +30,16 @@ const MyApp({super.key});
 
   @override
   Widget build(BuildContext context){
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ExpensesData()),
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
-      builder: (context, _) => MaterialApp(
+      child:  MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: Provider.of<ThemeProvider>(context).themeData,
-        home: AuthPage(),
+        theme: themeProvider.themeData,
+        home: const AuthPage(),
       ), 
     );
 }
