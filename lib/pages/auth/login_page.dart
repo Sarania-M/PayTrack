@@ -1,3 +1,4 @@
+import 'package:expenseapp/methods/auth_service.dart';
 import 'package:expenseapp/methods/expenses_data.dart';
 import 'package:expenseapp/models/gradient_button.dart';
 import 'package:expenseapp/models/input_field.dart';
@@ -92,14 +93,6 @@ void showError(String message, BuildContext context) {
                 InputField(hintText: 'Email', cont: emailCont, val: false,icon: Icon(Icons.email_rounded),),
                 SizedBox(height: 15,),
                 InputField(hintText: 'Password', cont: passCont, val: true,icon: Icon(Icons.lock_outline),),
-                SizedBox(height: 10,),
-                Row(
-                  
-                  children: [
-                    const SizedBox(width: 228,),
-                    Text('Forgot your password?',style: TextStyle(fontFamily: 'Cera',color: const Color.fromARGB(167, 255, 255, 255),fontSize: 15),)
-                  ],
-                ),
                 const SizedBox(height: 20,),
                 GradientButton(labelText: 'Login', onTap: () => logUserIn(emailCont, passCont), color1: Color.fromARGB(198, 198, 91, 177), color2: const Color.fromARGB(255, 134, 66, 132)),
                 const SizedBox(height: 15,),
@@ -119,7 +112,7 @@ void showError(String message, BuildContext context) {
                 borderRadius: BorderRadius.circular(7),
                 gradient: LinearGradient(colors: [const Color.fromARGB(255, 88, 97, 102),const Color.fromARGB(212, 91, 100, 105)])
                 ),
-                child: ElevatedButton(onPressed: () {},
+                child: ElevatedButton(onPressed: ()=> AuthService().handleGoogleLogin(context),
                 style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                 fixedSize: const Size(384, 55),
@@ -130,8 +123,8 @@ void showError(String message, BuildContext context) {
                     Icon(Icons.email_rounded,color: Colors.white,),
                     
                     SizedBox(width: 7,),
-            
-                    Text('Google',style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),),
+                    
+                    Text('Google',style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)
                   ],
                 )),
                 ),

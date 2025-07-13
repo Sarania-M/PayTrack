@@ -2,7 +2,6 @@ import 'package:expenseapp/methods/expenses_data.dart';
 import 'package:expenseapp/models/expense_item.dart';
 import 'package:expenseapp/models/expense_overview.dart';
 import 'package:expenseapp/models/item_tile.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
