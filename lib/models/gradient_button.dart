@@ -17,17 +17,20 @@ class GradientButton extends StatelessWidget{
   
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7),
-        gradient: LinearGradient(colors: [color1,color2])
+    return Padding(
+      padding: EdgeInsetsGeometry.only(right: 20,left: 20),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(7),
+          gradient: LinearGradient(colors: [color1,color2])
+        ),
+        child: ElevatedButton(onPressed: onTap,
+          style: ElevatedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+          fixedSize: const Size(384, 55),
+          shadowColor: const Color.fromARGB(0, 22, 20, 20),
+        ), child: Text(labelText,style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)),
       ),
-      child: ElevatedButton(onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(0, 255, 255, 255),
-        fixedSize: const Size(384, 55),
-        shadowColor: const Color.fromARGB(0, 22, 20, 20),
-      ), child: Text(labelText,style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)),
     );
   }
 }

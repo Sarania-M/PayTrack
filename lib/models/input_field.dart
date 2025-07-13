@@ -16,25 +16,27 @@ const InputField({
 
 @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 384,
-      child: TextFormField(
-        style: TextStyle(fontFamily: 'Cera',color: const Color.fromARGB(192, 255, 255, 255)),
-        decoration: InputDecoration(
-          hintText: hintText,
-          prefixIcon: icon,
-          prefixIconColor: const Color.fromARGB(134, 112, 107, 107) ,
-          hintStyle: TextStyle(color: const Color.fromARGB(134, 112, 107, 107),fontFamily: 'Cera'),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(7.0),
-                    borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 147, 166, 168),
-                      width: 2.0,
+    return Padding(
+      padding: EdgeInsetsGeometry.only(right: 20,left: 20),
+      child: SizedBox(
+        child: TextFormField(
+          style: TextStyle(fontFamily: 'Cera',color: const Color.fromARGB(192, 255, 255, 255)),
+          decoration: InputDecoration(
+            hintText: hintText,
+            prefixIcon: icon,
+            prefixIconColor: const Color.fromARGB(134, 112, 107, 107) ,
+            hintStyle: TextStyle(color: const Color.fromARGB(134, 112, 107, 107),fontFamily: 'Cera'),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(7.0),
+                      borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 147, 166, 168),
+                        width: 2.0,
+                      )
                     )
-                  )
+          ),
+          obscureText: val,
+          controller: cont,
         ),
-        obscureText: val,
-        controller: cont,
       ),
     );
   }

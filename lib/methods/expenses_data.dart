@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class ExpensesData extends ChangeNotifier{
 
   double? _dailyBudget;
-  double get dailyBudget => _dailyBudget ?? 100.0;
+  double? get dailyBudget => _dailyBudget ?? 100.0;
   
   List<ExpenseItem> allExpenseList = [];
 

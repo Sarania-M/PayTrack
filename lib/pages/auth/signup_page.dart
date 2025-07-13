@@ -1,11 +1,9 @@
 import 'package:expenseapp/methods/auth_service.dart';
-import 'package:expenseapp/methods/expenses_data.dart';
 import 'package:expenseapp/models/gradient_button.dart';
 import 'package:expenseapp/models/input_field.dart';
 import 'package:expenseapp/theme/theme_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SignupPage extends StatefulWidget {
 
@@ -39,21 +37,16 @@ Future<void> registerUser(
         email: emailCont.text.trim(),
         password: passCont.text.trim(),
       );
-
-      if (context.mounted) {
-        final provider = Provider.of<ExpensesData>(context, listen: false);
-        await provider.prepare();
-      }
     } else {
       if (context.mounted) {
         Navigator.of(context).pop();
         showError('Passwords don\'t match', context);
-        return;
-      }
+       }
+      return;
     }
 
     if (context.mounted) {
-      Navigator.of(context).pop();
+       Navigator.of(context).pop();
     }
     
   } on FirebaseAuthException catch (e) {
@@ -106,36 +99,38 @@ void showError(String message, BuildContext context) {
                 GradientButton(labelText: 'Login', onTap: () => registerUser(emailCont, passCont, confirmPass),color1:Color.fromARGB(198, 198, 91, 177),color2:const Color.fromARGB(255, 134, 66, 132)),
                 const SizedBox(height: 15,),
                 Row(children: [
-                  const SizedBox(width: 14,),
+                  const SizedBox(width: 22,),
                   Expanded(child: Divider(color: const Color.fromARGB(167, 255, 255, 255),thickness: 0.5,)),
                   const SizedBox(width: 10,),
                   Text('Or Continue with',style: TextStyle(fontFamily: 'Cera',color: const Color.fromARGB(167, 255, 255, 255),fontSize: 15),),
                   const SizedBox(width: 10,),
                   Expanded(child: Divider(color: const Color.fromARGB(167, 255, 255, 255),thickness: 0.5,)),
-                  const SizedBox(width: 14,),
+                  const SizedBox(width: 22,),
             
                 ],),
                 const SizedBox(height:10),
-                Container(
-                decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7),
-                gradient: LinearGradient(colors: [const Color.fromARGB(255, 88, 97, 102),const Color.fromARGB(212, 91, 100, 105)])
-                ),
-                child: ElevatedButton(onPressed: ()=> AuthService().handleGoogleLogin(context),
-                style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(0, 255, 255, 255),
-                fixedSize: const Size(384, 55),
-                shadowColor: const Color.fromARGB(0, 22, 20, 20),
-                ), child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.email_rounded,color: Colors.white,),
-                    
-                    SizedBox(width: 7,),
-                    
-                    Text('Google',style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)
-                  ],
-                )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7),
+                  gradient: LinearGradient(colors: [const Color.fromARGB(255, 88, 97, 102),const Color.fromARGB(212, 91, 100, 105)])
+                  ),
+                  child: ElevatedButton(onPressed: ()=> AuthService().handleGoogleLogin(context),
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                  shadowColor: const Color.fromARGB(0, 22, 20, 20),
+                  ), child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.email_rounded,color: Colors.white,),
+                      
+                      SizedBox(width: 7,),
+                      
+                      Text('Google',style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)
+                    ],
+                  )),
+                  ),
                 ),
                 const SizedBox(height:10),       
                 Row(

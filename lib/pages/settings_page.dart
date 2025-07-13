@@ -16,20 +16,12 @@ class SettingsPageState extends State<SettingsPage> {
   
   double? _currentBudget;
   final user = FirebaseAuth.instance.currentUser!;
+  
 
   @override
   void initState() {
     // Initialize the current budget from the Hive box
     super.initState();
-    _loadBudget();
-  }
-
-  Future<void> _loadBudget() async {
-    final provider = Provider.of<ExpensesData>(context, listen: false);
-    double? fetched = await provider.getDailyBudget();
-    setState(() {
-      _currentBudget = fetched;
-    });
   }
 
   void _showEditBudgetDialog() {
@@ -111,7 +103,9 @@ class SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Provider.of<ThemeProvider>(context).themeData.brightness == Brightness.dark;   
+    final isDarkMode = Provider.of<ThemeProvider>(context).themeData.brightness == Brightness.dark;
+    final provider = Provider.of<ExpensesData>(context);
+    final budget = provider.dailyBudget;
 
     return Consumer<ThemeProvider>(builder: (context,value,child)=>
     
@@ -146,8 +140,8 @@ class SettingsPageState extends State<SettingsPage> {
             child: ListTile(
               title: const Text("Daily Budget",style: TextStyle(fontFamily: 'Cera',fontSize: 18),),
               subtitle: Text(
-                _currentBudget!= null
-                    ? "₹${_currentBudget!.toStringAsFixed(2)}"
+                budget!= null
+                    ? "₹${budget.toStringAsFixed(2)}"
                     : "Not set",
                 style: const TextStyle(fontFamily: 'Cera',fontSize: 12),
               ),

@@ -97,36 +97,39 @@ void showError(String message, BuildContext context) {
                 GradientButton(labelText: 'Login', onTap: () => logUserIn(emailCont, passCont), color1: Color.fromARGB(198, 198, 91, 177), color2: const Color.fromARGB(255, 134, 66, 132)),
                 const SizedBox(height: 15,),
                 Row(children: [
-                  const SizedBox(width: 14,),
+                  const SizedBox(width: 22,),
                   Expanded(child: Divider(color: const Color.fromARGB(167, 255, 255, 255),thickness: 0.5,)),
                   const SizedBox(width: 10,),
                   Text('Or Continue with',style: TextStyle(fontFamily: 'Cera',color: const Color.fromARGB(167, 255, 255, 255),fontSize: 15),),
                   const SizedBox(width: 10,),
                   Expanded(child: Divider(color: const Color.fromARGB(167, 255, 255, 255),thickness: 0.5,)),
-                  const SizedBox(width: 14,),
+                  const SizedBox(width: 22,),
             
                 ],),
                 const SizedBox(height:10),
-                Container(
-                decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7),
-                gradient: LinearGradient(colors: [const Color.fromARGB(255, 88, 97, 102),const Color.fromARGB(212, 91, 100, 105)])
-                ),
-                child: ElevatedButton(onPressed: ()=> AuthService().handleGoogleLogin(context),
-                style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(0, 255, 255, 255),
-                fixedSize: const Size(384, 55),
-                shadowColor: const Color.fromARGB(0, 22, 20, 20),
-                ), child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.email_rounded,color: Colors.white,),
-                    
-                    SizedBox(width: 7,),
-                    
-                    Text('Google',style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)
-                  ],
-                )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7),
+                  gradient: LinearGradient(colors: [const Color.fromARGB(255, 88, 97, 102),const Color.fromARGB(212, 91, 100, 105)])
+                  ),
+                  child: ElevatedButton(onPressed: ()=> AuthService().handleGoogleLogin(context),
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                  fixedSize: const Size(384, 55),
+                  shadowColor: const Color.fromARGB(0, 22, 20, 20),
+                  ), child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.email_rounded,color: Colors.white,),
+                      
+                      SizedBox(width: 7,),
+                      
+                      Text('Google',style: TextStyle(color: Colors.white,fontFamily: 'Cera',fontSize: 15),)
+                    ],
+                  )),
+                  ),
                 ),
                 const SizedBox(height:10),
                 Row(
